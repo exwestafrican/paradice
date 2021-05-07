@@ -7,8 +7,15 @@ from django.db import models
 
 class User(AbstractUser):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+
+
+class Profile(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="user_profile"
+    )
     country_code = models.CharField(max_length=3)
     number = models.CharField(max_length=10)
+    country = models.CharField(max_length=250)
 
     def phone_number(self):
         return "{}{}".format(self.country_code, self.number)
