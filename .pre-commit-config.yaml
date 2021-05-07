@@ -11,3 +11,12 @@ repos:
     hooks:
     -   id: black
     stages: [push]
+    description: hook formats python code to look nice
+
+-   repo: https://github.com/pycqa/isort
+    rev: 5.5.4
+    hooks:
+    - id: isort
+    name: sorting imports
+    args: ["--profile", "black"]
+    description: hook re arranges import
