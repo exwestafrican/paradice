@@ -1,4 +1,4 @@
-# default_stages: [push]
+
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.3.0
@@ -6,11 +6,12 @@ repos:
     -   id: check-yaml
     -   id: end-of-file-fixer
     -   id: trailing-whitespace
+    stages: [push]
 -   repo: https://github.com/psf/black
     rev: 19.3b0
     hooks:
     -   id: black
-
+    name: formatting code
     description: hook formats python code to look nice
 
 -   repo: https://github.com/pycqa/isort
