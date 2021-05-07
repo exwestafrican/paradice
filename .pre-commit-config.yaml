@@ -1,7 +1,7 @@
+default_stages: [push]
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.3.0
-    default_stages: [push]
     hooks:
     -   id: check-yaml
     -   id: end-of-file-fixer
