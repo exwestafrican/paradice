@@ -1,5 +1,6 @@
-from django.db import models
 import uuid
+
+from django.db import models
 
 # Create your models here.
 
@@ -10,6 +11,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=9, decimal_places=2)
     units_available = models.PositiveSmallIntegerField()
     on_sale = models.BooleanField(default=False)
+    product_variation = models.JSONField(default=dict())
 
 
 class Image(models.Model):

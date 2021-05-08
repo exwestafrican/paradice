@@ -1,0 +1,6 @@
+SMALL = "sm"
+MEDIUM = "md"
+LARGE = "lg"
+EXTRA_LARGE = "xl"
+WHITE = "#FFF"
+BLACK = "#000"
