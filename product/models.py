@@ -13,6 +13,9 @@ class Product(models.Model):
     on_sale = models.BooleanField(default=False)
     product_variation = models.JSONField(default=dict)
 
+    def __str__(self):
+        return self.name
+
 
 class Image(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
