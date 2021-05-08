@@ -42,7 +42,7 @@ DJANGO_APPS = [
 ]
 LOCAL_APPS = ["product", "users"]
 
-THIRD_PARTY_APPS = ["rest_framework"]
+THIRD_PARTY_APPS = ["rest_framework", "django_extensions"]
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 
 
@@ -120,6 +120,7 @@ STATIC_URL = "/static/"
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
+SHELL_PLUS = "ipython"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "users.User"
 
