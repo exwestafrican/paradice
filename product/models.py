@@ -15,18 +15,20 @@ class Product(TimeStampMixin):
     units_available = models.PositiveSmallIntegerField()
     on_sale = models.BooleanField(default=False)
     product_variation = models.JSONField(default=dict)
-    product_code = models.CharField(default=Utils.generate_prd_code)
+    product_code = models.CharField(default=Utils.generate_prd_code, max_length=4)
 
     def __str__(self):
         return self.name
 
 
 class Image(TimeStampMixin):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name="product_image"
+    )
     img_variation = models.JSONField(default=dict)
 
     def __str__(self):
-        pass
+        return self.product.name
 
     class Meta:
         db_table = ""

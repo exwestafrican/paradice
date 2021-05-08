@@ -10,14 +10,15 @@ from product.models import Product
 
 
 class ProductModelViewSet(viewsets.ModelViewSet):
-    queryset = Product.objects.first()
+
     serializer_class = ps.ProductModelSerializer
+
+    def get_queryset(self):
+        return Product.objects.all()
 
     def list(self, request):
         queryset = self.get_queryset()
-        print(queryset)
-        serializer = self.serializer_class(queryset)
-        print(serializer)
+        serializer = self.serializer_class(queryset, many=True)
         return Response(
             {"success": True, "message": "success", "data": serializer.data},
             status=status.HTTP_200_OK,
