@@ -17,4 +17,5 @@ class ProductModelSerializer(serializers.ModelSerializer):
             "units_available",
             "on_sale",
             "product_variation",
+            "created_at",
         ]
