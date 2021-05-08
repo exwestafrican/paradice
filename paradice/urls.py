@@ -22,11 +22,7 @@ from product.views import ProductModelViewSet
 
 router = routers.DefaultRouter()
 router.register("products", ProductModelViewSet, basename="products")
-# urlpatterns = [
-#     path("admin/", admin.site.urls),
-#     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'),
-#     path("api/v1/", include(router.urls)),
-# ]]
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/v1/", include(router.urls)),
