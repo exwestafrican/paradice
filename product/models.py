@@ -2,6 +2,7 @@ import uuid
 
 from django.db import models
 
+from utils.func import Utils
 from utils.mixins import TimeStampMixin
 
 # Create your models here.
@@ -14,7 +15,7 @@ class Product(TimeStampMixin):
     units_available = models.PositiveSmallIntegerField()
     on_sale = models.BooleanField(default=False)
     product_variation = models.JSONField(default=dict)
-    product_code = models.CharField(default="")
+    product_code = models.CharField(default=Utils.generate_prd_code)
 
     def __str__(self):
         return self.name
