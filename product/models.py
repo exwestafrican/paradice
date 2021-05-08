@@ -11,12 +11,12 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=9, decimal_places=2)
     units_available = models.PositiveSmallIntegerField()
     on_sale = models.BooleanField(default=False)
-    product_variation = models.JSONField(default=dict())
+    product_variation = models.JSONField(default=dict)
 
 
 class Image(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    img_variation = models.JSONField(default=dict())
+    img_variation = models.JSONField(default=dict)
 
     def __str__(self):
         pass
