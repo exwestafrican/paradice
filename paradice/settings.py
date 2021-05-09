@@ -42,13 +42,14 @@ DJANGO_APPS = [
 ]
 LOCAL_APPS = ["product", "users"]
 
-THIRD_PARTY_APPS = ["rest_framework", "django_extensions"]
+THIRD_PARTY_APPS = ["rest_framework", "corsheaders", "django_extensions"]
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -128,3 +129,8 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.AllowAny"],
     "DATETIME_FORMAT": "%Y-%m-%dT%H:%M:%S.%fZ",
 }
+
+CORS_ALLOWED_ORIGINS = ["http://localhost:8000"]
+CORS_ORIGIN_WHITELIST = "*"
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
