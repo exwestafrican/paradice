@@ -128,9 +128,11 @@ AUTH_USER_MODEL = "users.User"
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.AllowAny"],
     "DATETIME_FORMAT": "%Y-%m-%dT%H:%M:%S.%fZ",
+    "DEFAULT_PAGINATION_CLASS": "utils.pagination.CustomPagination",
+    "PAGE_SIZE": 10,
 }
 
-# CORS_ALLOWED_ORIGINS = ["http://localhost:8000"]
+CORS_ALLOWED_ORIGINS = ["http://localhost:8000"]
 CORS_ORIGIN_WHITELIST = "*"
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True

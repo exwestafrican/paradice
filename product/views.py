@@ -10,7 +10,6 @@ from product.models import Product
 
 
 class ProductModelViewSet(viewsets.ModelViewSet):
-
     serializer_class = ps.ProductModelSerializer
 
     def get_queryset(self):
@@ -18,8 +17,11 @@ class ProductModelViewSet(viewsets.ModelViewSet):
 
     def list(self, request):
         queryset = self.get_queryset()
-        serializer = self.serializer_class(queryset, many=True)
+        page = self.paginate_queryset(queryset)
+        serializer = self.serializer_class(page, many=True)
         return Response(
-            {"success": True, "message": "success", "data": serializer.data},
+            self.get_paginated_response(
+                {"success": True, "message": "success", "data": serializer.data}
+            ),
             status=status.HTTP_200_OK,
         )
