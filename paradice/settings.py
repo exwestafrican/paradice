@@ -40,7 +40,7 @@ DJANGO_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
-LOCAL_APPS = ["product", "users"]
+LOCAL_APPS = ["product", "users", "order"]
 
 THIRD_PARTY_APPS = ["rest_framework", "corsheaders", "django_extensions"]
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS

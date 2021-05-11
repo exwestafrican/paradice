@@ -4,18 +4,25 @@ from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+from utils.mixins import AbstractProfileMixin, TimeStampMixin
+
 
 class User(AbstractUser):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
 
-class Profile(models.Model):
+class AnonCustomer(AbstractProfileMixin):
+    email = models.EmailField()
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
+
+class Profile(AbstractProfileMixin, TimeStampMixin):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="user_profile"
     )
-    country_code = models.CharField(max_length=3)
-    number = models.CharField(max_length=10)
-    country = models.CharField(max_length=250)
 
     def phone_number(self):
         return "{}{}".format(self.country_code, self.number)
